@@ -14,6 +14,6 @@ script:
   - docker exec build cmake --build /mnt/shared/build --target package
   - docker pull ubuntu:${ubuntu_version}
   - docker run -itd --name test --volume="`pwd`:/mnt:rw" ubuntu:${ubuntu_version}
-  - docker exec test apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y paraview
+  - docker exec test /bin/sh -c "apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y paraview"
   - docker exec test dpkg -i /mnt/shared/build/Example-0.1.0-Linux.deb
   - docker exec test pvpython /mnt/shared/.travis.test.py
