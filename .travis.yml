@@ -6,6 +6,7 @@ services:
 matrix:
   include:
     - env: ubuntu_version="18.04"
+    - env: ubuntu_version="16.04"
 script:
   - docker pull lhofmann/paraview-ubuntu:${ubuntu_version}
   - chmod -R 777 .
