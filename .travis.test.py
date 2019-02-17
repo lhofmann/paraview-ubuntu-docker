@@ -1,7 +1,11 @@
 from paraview.simple import *
 
 # simple pipeline that executes our example plugin
-s = UnstructuredCellTypes()
+if GetParaViewVersion().minor < 4:
+    s = ProgrammableSource()
+    s.OutputDataSetType = 'vtkUnstructuredGrid'
+else:
+    s = UnstructuredCellTypes()
 t = ExamplePlugin(s)
 u = servermanager.Fetch(t)
 
