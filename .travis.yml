@@ -16,4 +16,4 @@ script:
   - docker run -itd --name test --volume="`pwd`:/mnt:rw" ubuntu:${ubuntu_version}
   - docker exec test /bin/sh -c "apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y paraview"
   - docker exec test dpkg -i /mnt/shared/build/Example-0.1.0-Linux.deb
-  - docker exec test pvpython /mnt/shared/.travis.test.py
+  - docker exec test pvpython /mnt/.travis.test.py
